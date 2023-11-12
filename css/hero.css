@@ -1,0 +1,77 @@
+section.hero h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 0vh;
+  font-weight: 600;
+  color: white;
+  line-height: 3.7rem;
+  margin-top: 6vh;
+}
+
+section.hero {
+  margin-inline: 20px;
+}
+
+section.hero p {
+  text-align: center;
+  margin-top: 4vh;
+  font-weight: normal;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.);
+}
+
+section.hero p span {
+  color: #8100fe;
+  font-weight: 600;
+}
+.shbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  background-color: #8100fe;
+  width: 45vw;
+  border-radius: 25px;
+  margin-inline: auto;
+  gap: 2.5vw;
+  font-size: 16px;
+  font-weight: bold;
+  padding-block: 0.5rem;
+  margin-top: 4vh;
+}
+
+.cbtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5vh;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.whyus {
+  margin-top: 4vh;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: right;
+}
+section.hero i {
+  font-size: 2.25rem;
+  color: #8100fe;
+}
+
+section.hero .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 2.5vh;
+}
+p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+hr {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+}

@@ -1,0 +1,155 @@
+@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(11, 11, 11, 1);
+    overflow-x: hidden;
+}
+
+
+nav {
+  background-color: rgba(11, 11, 11, 0.95);
+  backdrop-filter: blur(25px);
+  padding: 15px;
+}
+
+nav .content {
+  margin-inline: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .content img {
+  width: 135px;
+}
+
+nav .content ul {
+  display: flex;
+  list-style: none;
+  gap: 4vw;
+}
+
+nav .content .fa-bars {
+  color: #8100fe;
+  font-size: 2rem;
+  display: none;
+}
+
+nav .content .nav-items li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 200;
+}
+
+nav .content .nav-items li:hover {
+transform: scale(1.035);
+}
+
+nav .content .nav-items li .current {
+  color: #8100fe;
+  font-weight: bold;
+}
+
+nav .content .nav-items li .cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5vw;
+}
+
+nav .content .nav-items li .cart .fa-cart-shopping {
+  color: #8100fe;
+}
+
+.mobile-menu {
+ position: absolute;
+ background-color: rgba(11, 11, 11, 0.95);
+ top: 0;
+ left: 0;
+ height: 100Vh;
+ width: 100vw;
+ display: flex;
+ justify-content: center;
+ overflow-y: hidden;
+ overflow-x: hidden;
+ 
+ 
+
+ 
+}
+
+.mobile-menu .mobile-items {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.mobile-menu .fa-x {
+    color: #8100fe;
+    font-size: 1.8rem;
+    position: relative;
+    left: 55vw;
+}
+
+.mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.mobile-routes li {
+    margin-top: 5vh;
+}
+.mobile-routes li a{
+      color: white;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+.mobile-routes li .current{
+  color: #8100fe;
+  font-weight: bold;
+}
+
+.mobile-routes li .cart{
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+.mobile-routes li .cart .fa-cart-shopping {
+  color: #8100fe;
+}
+.nv {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+  nav .content .nav-items {
+    display: none;
+  }
+  nav .content .fa-bars {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    padding: 5px;
+    border-bottom: 0.1px solid rgba(255, 255, 255, 0.15);
+  }
+  nav .content {
+    margin-inline: 15px;
+  }
+}

@@ -1,0 +1,45 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 5vh !important;
+  margin-bottom: 3vh;
+}
+
+.swiper-slide {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-size: 16px;
+}
+
+.swiper-slide p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.swiper-slide .price {
+  color: #8100fe;
+}
+
+.swiper-slide h2 {
+  margin: 0;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.swipe-container {
+  margin-inline: 20px;
+}
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #8100fe !important;
+}

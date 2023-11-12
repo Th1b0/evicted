@@ -1,0 +1,33 @@
+.faq-container {
+    margin-inline: 20px;
+}
+
+.faq-item {
+    margin-bottom: 3vh;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90vw;
+    margin-inline: auto;
+    
+}
+
+.question {
+    padding: 15px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.answer {
+    padding: 15px;
+    display: none;
+}
+
+.faq-item.active .question {
+    background-color: #8100fe;
+    color: white;
+}
