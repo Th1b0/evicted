@@ -31,6 +31,7 @@
   display: block;
   width: 100%;
   height: 100%;
+    margin-block: 4rem;
 }
 
 .swipe-container {
@@ -42,4 +43,14 @@
 
 .swiper-pagination-bullet-active {
   background-color: #8100fe !important;
+}
+
+@media screen and (min-width: 600px) {
+  .swiper-slide img {
+  display: block;
+  width: 25%;
+  height: 25%;
+  margin-inline: auto;
+  margin-block: 4rem;
+}
 }

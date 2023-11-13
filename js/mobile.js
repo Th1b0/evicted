@@ -9,3 +9,7 @@ mbbtn.addEventListener("click", () => {
 cbtn.addEventListener("click", ()=> {
     menu.classList.add("nv")
 })
+
+function closeMenu() {
+  menu.classList.add("nv");
+}

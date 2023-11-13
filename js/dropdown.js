@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const answer = item.querySelector(".answer");
 
     question.addEventListener("click", function () {
-      item.classList.toggle("active");
+      item.classList.toggle("c");
       answer.style.display =
         answer.style.display === "block" ? "none" : "block";
     });
