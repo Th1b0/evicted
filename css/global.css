@@ -151,15 +151,9 @@ nav .content .nav-items li .cart .fa-cart-shopping {
 }
 
 @media screen and (max-width: 600px) {
-  .container {
-    margin-inline: 15px;
-  }
   nav {
-    padding: 10px;
+    padding-block: 10px;
     border-bottom: 0.1px solid rgba(255, 255, 255, 0.15);
-  }
-  nav .content {
-    margin-inline: 25px;
   }
 }
 
