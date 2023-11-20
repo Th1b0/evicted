@@ -180,13 +180,14 @@ nav .content .nav-items li .cart .fa-cart-shopping {
 
 .number-cart {
   background-color: #8100fe;
-  position: relative;
-  top: -38px;
-  right: 2px;
-  height: 24px;
-  width: 25px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  position: absolute;
+  top: -1px;
+  right: 17px;
+  height: 26px;
+  width: 27px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Make it transparent to mouse events */
 }
