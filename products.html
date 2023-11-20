@@ -43,6 +43,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script defer src="./js/cartPreview.js"></script>
 
     <style>
         .container {
@@ -184,7 +185,14 @@
                 <li><a class="current" href="/products">Products</a></li>
                 <li><a href="#faq">Faq</a></li>
                 <li><a href="/support">Support</a></li>
-                <li><a class="cart" href="/cart">cart<i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li>
+                    <div class="cart-btn">
+                        <span class="nav-icon">
+                            <i class="fas fa-cart-plus"></i>
+                        </span>
+                        <div class="cart-items">0</div>
+                    </div>
+                </li>
             </ul>
             <i id="mb-btn" class="fa-solid fa-bars"></i>
             <div class="mobile-menu nv">
@@ -209,15 +217,17 @@
                 <h2>Airpod Pro with "ANC"</h2>
                 <p>Meet Airpod Pro with ANC – 35dB noise cancellation, seamless iOS integration, and extended
                     battery life.</p>
-                <h2 class="price">€51.99</h2>
-                <div class="btns"><button>Buy now</button><button>Add to cart</button></div>
+                <h2 class="price">€54.99</h2>
+                <div class="btns"><button>Buy now</button><button
+                        onclick="addTocart('Airpod Pro with ANC','54,99','./img/airpods-32434.png')">Add to cart</button></div>
             </div>
             <div class="swiper-slide1">
                 <div class="img-wrapper"><img src="./img/airpods-32434.png" alt=""></div>
                 <h2>Airpod 3th Gen</h2>
                 <p>Meet Airpod 3th Gen, seamless iOS integration.</p>
                 <h2 class="price">€46.99</h2>
-                <div class="btns"><button>Buy now</button><button>Add to cart</button></div>
+                <div class="btns"><button>Buy now</button><button
+                        onclick="addTocart('Airpod 3th Gen','49,99','./img/airpods-32434.png')">Add to cart</button></div>
             </div>
             <div class="swiper-slide1">
                 <div class="img-wrapper"><img src="./img/airpods-32434.png" alt=""></div>
@@ -225,7 +235,8 @@
                 <p>Meet Airpod Pro with ANC – 35dB noise cancellation, seamless iOS integration, and extended
                     battery life.</p>
                 <h2 class="price">€54.99</h2>
-                <div class="btns"><button>Buy now</button><button>Add to cart</button></div>
+                <div class="btns"><button>Buy now</button><button
+                        onclick="addTocart('Airpod Pro 2 with ANC','59,99','./img/airpods-32434.png')">Add to cart</button></div>
             </div>
             <div class="swiper-slide1">
                 <div class="img-wrapper"><img src="./img/airpods-32434.png" alt=""></div>
@@ -283,6 +294,7 @@
             </div>
         </div>
     </footer>
+    
 
 </body>
 

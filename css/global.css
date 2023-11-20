@@ -22,13 +22,14 @@ nav {
   position: fixed;
   top: 0;
   z-index: 99;
+  height: 8vh;
 }
 
 nav .content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-inline: 25px;
+  margin-inline: 35px;
 }
 
 nav .content img {
@@ -65,13 +66,11 @@ nav .content .nav-items li .current {
 
 nav .content .nav-items li .cart {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5vw;
+  justify-content: center;
 }
 
 nav .content .nav-items li .cart .fa-cart-shopping {
-  color: #8100fe;
+  color: white;
 }
 
 .mobile-menu {
@@ -128,7 +127,7 @@ nav .content .nav-items li .cart .fa-cart-shopping {
 }
 
 .mobile-routes li .cart .fa-cart-shopping {
-  color: #8100fe;
+  color: white;
 }
 .nv {
   display: none;
@@ -177,4 +176,17 @@ nav .content .nav-items li .cart .fa-cart-shopping {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.number-cart {
+  background-color: #8100fe;
+  position: relative;
+  top: -38px;
+  right: 2px;
+  height: 24px;
+  width: 25px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 }
