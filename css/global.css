@@ -45,7 +45,6 @@ nav .content ul {
 nav .content .fa-bars {
   color: #8100fe;
   font-size: 2rem;
-  display: none;
 }
 
 nav .content .nav-items li a {
@@ -137,6 +136,10 @@ nav .content .nav-items li .cart .fa-cart-shopping {
   margin-inline: 6rem;
 }
 
+.mobile-nav {
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   .container {
     margin-inline: 1rem;
@@ -144,9 +147,29 @@ nav .content .nav-items li .cart .fa-cart-shopping {
   nav .content .nav-items {
     display: none;
   }
-  nav .content .fa-bars {
-    display: block;
-  }
+  .cart-m {
+  display: inline-block !important;
+}
+.number-cart {
+  background-color: #8100fe;
+  position: absolute;
+  top: -1px;
+  right: 17px;
+  height: 26px;
+  width: 27px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* Make it transparent to mouse events */
+}
+.mobile-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
 }
 
 @media screen and (max-width: 600px) {

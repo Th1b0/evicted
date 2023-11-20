@@ -55,6 +55,27 @@
 
 
 <body>
+    <style>
+        .number-cart {
+            background-color: #8100fe;
+            position: absolute;
+            top: -1px;
+            right: 17px;
+            height: 26px;
+            width: 27px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            /* Make it transparent to mouse events */
+        }
+    
+        .fa-cart-shopping {
+            color: white;
+            font-size: 1.5rem;
+        }
+    </style>
     <nav>
         <div class="content">
             <a href="/"><img src="./img/full-logo-white.svg" alt="Logo of evicted"></a>
@@ -67,7 +88,11 @@
                         <p class="number-cart">0</p>
                     </a></li>
             </ul>
-            <i id="mb-btn" class="fa-solid fa-bars"></i>
+            <div class="mobile-nav"><i id="mb-btn" class="fa-solid fa-bars"></i>
+                <a class="cart-m" style="display: none;" href="/cart"><i class="fa-solid fa-cart-shopping"></i>
+                    <p class="number-cart">0</p>
+                </a>
+            </div>
             <div class="mobile-menu nv">
                 <div class="mobile-items">
                     <i id="cbtn" class="fa-solid fa-x"></i>
@@ -76,9 +101,6 @@
                         <li><a href="/products">Products</a></li>
                         <li><a onclick="closeMenu()" href="#faq">Faq</a></li>
                         <li><a href="/support">Support</a></li>
-                        <li><a class="cart" href="/cart"><i class="fa-solid fa-cart-shopping"></i>
-                                <p class="number-cart">0</p>
-                            </a></li>
                     </ul>
                     </div>
                     </div>
