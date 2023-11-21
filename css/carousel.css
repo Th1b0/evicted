@@ -29,9 +29,11 @@
 
 .swiper-slide img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 65%;
+  height: 65%;
     margin-block: 4rem;
+    text-align: center;
+    margin-inline: auto;
 }
 
 .swipe-container {
