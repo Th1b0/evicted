@@ -14,26 +14,31 @@ const products = [
     desc: "Meet the Airpod Pro with ANC – 35dB noise cancellation, seamless iOS integration, and extended battery life.",
     name: "Airpod Pro",
     price: 54.99,
+    img: "./img/airpods-32434.png",
   },
   {
     id: "2",
     desc: "Meet the Airpod Pro 2 with ANC – 35dB noise cancellation, seamless iOS integration, and extended battery life.",
     name: "Airpod Pro 2",
     price: 58.99,
+    img: "./img/airpods-32434.png",
   },
   {
     id: "3",
     desc: "Meet the Airpod 3th Gen, seamless iOS integration.",
     name: "Airpod 3th Gen",
     price: 49.99,
+    img: "./img/550x531-PhotoRoom.png-PhotoRoom.png",
   },
   {
     id: "4",
     desc: "Meet the Airpod 2th Gen, seamless iOS integration.",
     name: "Airpod 2th Gen",
     price: 44.99,
+    img: "./img/550x531-PhotoRoom.png-PhotoRoom.png",
   },
 ];
+
 // Initialize the cart number for each element
 cartNumberElements.forEach((element) => (element.textContent = totalCartItems));
 
@@ -71,3 +76,59 @@ function addToCart(id) {
 
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
+function renderProducts() {
+  // Check if the current page is /cart.html or /cart
+  const currentPage = window.location.pathname;
+  if (currentPage === "/cart.html" || currentPage === "/cart") {
+    // Retrieve products from local storage
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    // Create a reference to the table body
+    const tableBody = document
+      .getElementById("productTable")
+      .getElementsByTagName("tbody")[0];
+
+    // Clear existing table content
+    tableBody.innerHTML = "";
+
+    let totalCartPrice = 0;
+
+    // Iterate through cart items and render product information in the table
+    cartItems.forEach((cartItem) => {
+      const [productId, quantity] = cartItem.split("+");
+      const product = products.find((p) => p.id === productId);
+
+      // Create a table row
+      const row = tableBody.insertRow();
+
+      // Insert cells with product information
+      const cellImage = row.insertCell(0);
+      const image = document.createElement("img");
+      image.src = product.img;
+      image.alt = product.name;
+      image.style.width = "100px";
+      cellImage.appendChild(image);
+
+      const cellName = row.insertCell(1);
+      cellName.textContent = `${product.name}`;
+
+      const cellQty = row.insertCell(2);
+      cellQty.innerHTML = `<p>Qty ${quantity}</p>  <span>€${
+        quantity * product.price
+      }</span><br><span>€${product.price}</span>`;
+      //make it so the unite price will be under the qty and full price
+      totalCartPrice = totalCartPrice + product.price * quantity;
+    });
+
+    // Add a row at the bottom for the total price
+    const totalRow = tableBody.insertRow();
+    const totalCell = totalRow.insertCell(0);
+    totalCell.colSpan = 4; // Span the entire row
+    totalCell.innerHTML = `<p>Total Price:</p> <span>€${totalCartPrice.toFixed(
+      2
+    )}</span>`;
+  }
+}
+
+// Call the renderProducts function when the page loads
+document.addEventListener("DOMContentLoaded", renderProducts);

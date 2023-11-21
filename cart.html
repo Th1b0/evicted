@@ -38,45 +38,59 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script defer src="./js/mobile.js"></script>
-    <script defer src="./js/carousel.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script defer src="./js/cartPreview.js"></script>
-
     <style>
         .fa-cart-shopping {
             color: white;
             font-size: 1.5rem;
         }
-        .container {
-            margin-inline: 25px;
-        }
 
-        @font-face {
-            font-family: "Sf Pro Display";
-            src: url("FontsFree-Net-SFProDisplay-Bold.ttf") format("truetype");
-        }
-
-        .btns {
+        .cart-table {
+            color: white;
             display: flex;
-            justify-content: space-between;
-            gap: 1.5rem;
-            margin-top: auto;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
-        .btns button {
+        table {
+            margin-top: 20vh;
+            width: 50vw;
+            border-collapse: collapse;
+            border-spacing: 0;
+            text-align: center;
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-align: left;
+        }
+
+        span {
+            color: #8100fe;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .checkout {
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             color: white;
             background-color: #8100fe;
-            width: 8.5vw;
+            width: 50vw;
             border-radius: 25px;
             margin-inline: auto;
-            gap: 2.5vw;
             font-size: 16px;
             font-weight: bold;
             padding-block: 0.5rem;
@@ -84,100 +98,12 @@
             cursor: pointer;
             margin-top: 1.5rem;
         }
-
-        .btns button:nth-child(2) {
-            background-color: rgba(11, 11, 11, 1);
-            border: 3px solid #8100fe;
-        }
-
-        .catalog-items {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            margin-top: -4rem;
-        }
-
-        .swiper-slide1 {
-            text-align: center;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            width: 25vw;
-            margin-top: 8rem;
-        }
-
-        .swiper-slide1 p {
-            color: rgba(255, 255, 255, 0.8);
-            width: 20vw;
-        }
-
-        .swiper-slide1 .price {
-            color: #8100fe;
-        }
-
-        .swiper-slide1 h2 {
-            margin: 0;
-            color: white;
-        }
-
-        .swiper-slide1 img {
-            display: block;
-            width: 150px;
-            height: 150px;
-        }
-
-        .img-wrapper {
-            height: 150px;
-            margin-bottom: 2rem;
-        }
-
-
-
-        @media screen and (max-width: 1400px) {
-
-            .catalog-items {
-                display: flex;
-                flex-direction: column;
-                margin-top: -4rem;
-            }
-
-            .swiper-slide1 p {
-                width: 90vw;
-            }
-
-            .swiper-slide1 h2 {
-                width: 90vw;
-            }
-
-            .btns {
-                display: flex;
-                flex-direction: column;
-                gap: 0rem;
-                margin-top: -1rem;
-            }
-
-            .btns button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none;
-                color: white;
-                background-color: #8100fe;
-                width: 50vw;
-                border-radius: 25px;
-                margin-inline: auto;
-                font-size: 16px;
-                font-weight: bold;
-                padding-block: 0.5rem;
-                border: none;
-                cursor: pointer;
-                margin-top: 1.5rem;
-            }
-
-        }
     </style>
+    <script defer src="./js/mobile.js"></script>
+    <script defer src="./js/carousel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script defer src="./js/cartPreview.js"></script>
 </head>
 
 <body>
@@ -186,8 +112,8 @@
             <a href="/"><img src="./img/full-logo-white.svg" alt="Logo of evicted"></a>
             <ul class="nav-items">
                 <li><a href="/">Home</a></li>
-                <li><a class="current" href="/products">Products</a></li>
-                <li><a href="/#faq">Faq</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="#faq">Faq</a></li>
                 <li><a href="/support">Support</a></li>
                 <li><a class="cart" href="/cart"><i class="fa-solid fa-cart-shopping"></i>
                         <p class="number-cart">0</p>
@@ -202,56 +128,27 @@
                 <div class="mobile-items">
                     <i id="cbtn" class="fa-solid fa-x"></i>
                     <ul class="mobile-routes">
-                        <li><a href="/">Home</a></li>
-                        <li><a class="current" href="/products">Products</a></li>
-                        <li><a onclick="closeMenu()" href="/#faq">Faq</a></li>
+                        <li>
+                            <a href=" /">Home</a>
+                        </li>
+                        <li><a href="/products">Products</a></li>
+                        <li><a onclick="closeMenu()" href="#faq">Faq</a></li>
                         <li><a href="/support">Support</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="container" style="margin-top: 20vh;">
-        <h1 style="text-align: center;color: white;">Catalog:</h1>
-        <div class="catalog-items">
-            <div class="swiper-slide1">
-                <div class="img-wrapper"><img src="./img/airpods-32434.png" alt=""></div>
-                <h2>Airpod Pro with "ANC"</h2>
-                <p>Meet the Airpod Pro with ANC – 35dB noise cancellation, seamless iOS integration, and extended
-                    battery life.</p>
-                <h2 class="price">€54.99</h2>
-                <div class="btns"><button>Buy now</button><button
-                        onclick="addToCart('1')">Add to cart</button></div>
-            </div>
-            <div class="swiper-slide1">
-                <div class="img-wrapper"><img src="./img/550x531-PhotoRoom.png-PhotoRoom.png" alt=""></div>
-                <h2>Airpod 3th Gen</h2>
-                <p>Meet the Airpod 3th Gen, seamless iOS integration.</p>
-                <h2 class="price">€49.99</h2>
-                <div class="btns"><button>Buy now</button><button
-                        onclick="addToCart('2')">Add to cart</button></div>
-            </div>
-            <div class="swiper-slide1">
-                <div class="img-wrapper"><img src="./img/airpods-32434.png" alt=""></div>
-                <h2>Airpod Pro 2 with "ANC"</h2>
-                <p>Meet the Airpod Pro with ANC – 35dB noise cancellation, seamless iOS integration, and extended
-                    battery life.</p>
-                <h2 class="price">€58.99</h2>
-                <div class="btns"><button>Buy now</button><button
-                        onclick="addToCart('3')">Add to cart</button></div>
-            </div>
-            <div class="swiper-slide1">
-                <div class="img-wrapper"><img src="./img/550x531-PhotoRoom.png-PhotoRoom.png" alt=""></div>
-                <h2>Airpod 2th Gen</h2>
-                <p>Meet the Airpod Pro with ANC – 35dB noise cancellation, seamless iOS integration, and extended
-                    battery life.</p>
-                <h2 class="price">€44.99</h2>
-                <div class="btns"><button>Buy now</button><button onclick="addToCart('4')">Add to cart</button></div>
-            </div>
-
-            </div>
-        </div>
+    <div class="cart-table">
+        <table id="productTable">
+            <thead>
+            </thead>
+            <tbody>
+                <!-- Product information will be added here dynamically -->
+            </tbody>
+        </table>
     </div>
+    <button class="checkout" onclick="checkout()">Checkout</button>
     <footer>
         <div class="footer-content">
 
@@ -283,8 +180,12 @@
             </div>
         </div>
     </footer>
-    
-
+    <script>
+        function checkout() {
+            alert('Implement your checkout logic here.');
+            // You can redirect to a checkout page or handle payment processing.
+        }
+    </script>
 </body>
 
 </html>
