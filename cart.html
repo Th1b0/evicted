@@ -147,8 +147,24 @@
                 <!-- Product information will be added here dynamically -->
             </tbody>
         </table>
+            <form id="paymentForm"
+                style="color: white;margin-top: 2rem;font-weight: bold;font-size: 1.1rem;display: flex;flex-direction: column;justify-content: center;align-items: flex-start;gap: 1rem;">
+                <label>
+                    <input type="radio" name="paymentOption" data-method="1" id="card" value="card">
+                    Card/Link/Google/Apple (2.5% + €0.35)
+                </label>
+                <label>
+                    <input type="radio" name="paymentOption" data-method="2" id="card" value="ideal">
+                    iDEAL/Bancontact (€0.35)
+                </label>
+                <label>
+                    <input type="radio" name="paymentOption" data-method="3" id="card" value="paypal">
+                    PayPal (2% + €0.10)
+                </label>
+            </form>
+            <button class="checkout" onclick="checkout()">Checkout</button>
     </div>
-    <button class="checkout" onclick="checkout()">Checkout</button>
+
     <footer>
         <div class="footer-content">
 
@@ -180,12 +196,11 @@
             </div>
         </div>
     </footer>
+    <!-- Add this form within the body tag -->
     <script>
-        function checkout() {
-            alert('Implement your checkout logic here.');
-            // You can redirect to a checkout page or handle payment processing.
-        }
+
     </script>
+
 </body>
 
 </html>

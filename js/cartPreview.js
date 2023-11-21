@@ -124,11 +124,117 @@ function renderProducts() {
     const totalRow = tableBody.insertRow();
     const totalCell = totalRow.insertCell(0);
     totalCell.colSpan = 4; // Span the entire row
-    totalCell.innerHTML = `<p>Total Price:</p> <span>€${totalCartPrice.toFixed(
+    totalCell.innerHTML = `<div class="total" data-price="${totalCartPrice.toFixed(
       2
-    )}</span>`;
+    )}"><p>Total Price:</p> <span>€${totalCartPrice.toFixed(2)}</span></div>`;
   }
 }
 
 // Call the renderProducts function when the page loads
 document.addEventListener("DOMContentLoaded", renderProducts);
+document.addEventListener("DOMContentLoaded", adjustPrice);
+
+function adjustPrice() {
+  const card = document.querySelectorAll("#card");
+  const total = document.querySelector(".total");
+
+  const totalprice = total.getAttribute("data-price");
+  for (const radioButton of card) {
+    radioButton.addEventListener("change", () => {
+      console.log(radioButton.checked);
+      if (radioButton.checked) {
+        if (radioButton.getAttribute("data-method") == "1") {
+          total.innerHTML = `<p>Total Price:</p> <span>€${(
+            parseInt(totalprice) +
+            parseInt(totalprice) * 0.025 +
+            0.35
+          ).toFixed(2)}</span>`;
+        }
+        if (radioButton.getAttribute("data-method") == "2") {
+          total.innerHTML = `<p>Total Price:</p> <span>€${(
+            parseInt(totalprice) + 0.35
+          ).toFixed(2)}</span>`;
+        }
+        if (radioButton.getAttribute("data-method") == "3") {
+          total.innerHTML = `<p>Total Price:</p> <span>€${(
+            parseInt(totalprice) +
+            parseInt(totalprice) * 0.02 +
+            0.1
+          ).toFixed(2)}</span>`;
+        }
+      }
+    });
+  }
+}
+
+function checkout() {
+  // Retrieve selected payment option
+  const selectedPaymentOption = document.querySelector(
+    'input[name="paymentOption"]:checked'
+  ).value;
+
+  // Retrieve and calculate the total price from cart items in local storage
+  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const totalCartPrice = cartItems.reduce((total, item) => {
+    const [productId, quantity] = item.split("+");
+    const product = products.find((p) => p.id === productId);
+
+    // Calculate price based on the selected payment option
+    let price = product.price * quantity;
+
+    if (
+      selectedPaymentOption === "ideal" ||
+      selectedPaymentOption === "bancontact"
+    ) {
+      // Add extra fee for iDEAL and Bancontact
+      price = price * 1.025 + 0.25;
+    } else if (selectedPaymentOption === "bancontact") {
+      // Add extra fee for Bancontact
+      price = price + 0.35;
+    }
+
+    return total + price;
+  }, 0);
+
+  // Show confirmation popup
+  const confirmation = confirm(
+    `Total Price (${selectedPaymentOption}): €${totalCartPrice.toFixed(
+      2
+    )}\n\nProceed to checkout?`
+  );
+
+  // If user confirms, you can implement further logic, such as redirecting to a checkout page or handling payment processing
+  if (confirmation) {
+    // Implement your checkout logic here
+    console.log("Redirecting to checkout...");
+  }
+}
+
+function feeCalculate(id) {
+  const total = document.querySelector(".total");
+
+  const totalprice = total.getAttribute("data-price");
+  console.log(totalprice);
+  switch (id) {
+    case 1:
+      total.innerHTML = `<p>Total Price:</p> <span>€${(
+        parseInt(totalprice) +
+        parseInt(totalprice) * 0.025 +
+        0.35
+      ).toFixed(2)}</span>`;
+      console.log(1);
+    case 2:
+      total.innerHTML = `<p>Total Price:</p> <span>€${(
+        parseInt(totalprice) + 0.35
+      ).toFixed(2)}</span>`;
+      console.log(2);
+    case 3:
+      total.innerHTML = `<p>Total Price:</p> <span>€${(
+        parseInt(totalprice) +
+        parseInt(totalprice) * 0.02 +
+        0.1
+      ).toFixed(2)}</span>`;
+      console.log(3);
+  }
+}
+
