@@ -46,6 +46,10 @@
     <script defer src="./js/cartPreview.js"></script>
 
     <style>
+        .fa-cart-shopping {
+            color: white;
+            font-size: 1.5rem;
+        }
         .container {
             margin-inline: 25px;
         }
@@ -189,7 +193,11 @@
                         <p class="number-cart">0</p>
                     </a></li>
             </ul>
-            <i id="mb-btn" class="fa-solid fa-bars"></i>
+            <div class="mobile-nav"><i id="mb-btn" class="fa-solid fa-bars"></i>
+                <a class="cart-m" style="display: none;" href="/cart"><i class="fa-solid fa-cart-shopping"></i>
+                    <p class="number-cart">0</p>
+                </a>
+            </div>
             <div class="mobile-menu nv">
                 <div class="mobile-items">
                     <i id="cbtn" class="fa-solid fa-x"></i>
@@ -198,9 +206,6 @@
                         <li><a class="current" href="/products">Products</a></li>
                         <li><a onclick="closeMenu()" href="/#faq">Faq</a></li>
                         <li><a href="/support">Support</a></li>
-                        <li><a class="cart" href="/cart"><i class="fa-solid fa-cart-shopping"></i>
-                                <p class="number-cart">0</p>
-                            </a></li>
                     </ul>
                 </div>
             </div>
