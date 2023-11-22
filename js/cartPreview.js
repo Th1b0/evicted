@@ -113,9 +113,9 @@ function renderProducts() {
       cellName.textContent = `${product.name}`;
 
       const cellQty = row.insertCell(2);
-      cellQty.innerHTML = `<p>Qty ${quantity}</p>  <span>€${
+      cellQty.innerHTML = `<p>Qty ${quantity}</p>  <span>€${(
         quantity * product.price
-      }</span><br><span>€${product.price}</span>`;
+      ).toFixed(2)}</span><br><span>€${product.price}</span>`;
       //make it so the unite price will be under the qty and full price
       totalCartPrice = totalCartPrice + product.price * quantity;
     });
@@ -144,23 +144,43 @@ function adjustPrice() {
       console.log(radioButton.checked);
       if (radioButton.checked) {
         if (radioButton.getAttribute("data-method") == "1") {
-          total.innerHTML = `<p>Total Price:</p> <span>€${(
+          total.innerHTML = `<p>Total Price:</p> <span>€${parseInt(
+            totalprice
+          ).toFixed(2)}</span><p>+ €${(
+            parseInt(totalprice) +
+            parseInt(totalprice) * 0.025 +
+            0.35 -
+            parseInt(totalprice)
+          ).toFixed(2)}</p><hr><p>€${(
             parseInt(totalprice) +
             parseInt(totalprice) * 0.025 +
             0.35
-          ).toFixed(2)}</span>`;
+          ).toFixed(2)}</p>`;
         }
         if (radioButton.getAttribute("data-method") == "2") {
-          total.innerHTML = `<p>Total Price:</p> <span>€${(
-            parseInt(totalprice) + 0.35
-          ).toFixed(2)}</span>`;
+          total.innerHTML = `<p>Total Price:</p> <span>€${parseInt(
+            totalprice
+          ).toFixed(2)}</span><p>+ €${(
+            parseInt(totalprice) -
+            parseInt(totalprice) +
+            0.35
+          ).toFixed(2)}</p><hr><p>€${(parseInt(totalprice) + 0.35).toFixed(
+            2
+          )}</p>`;
         }
         if (radioButton.getAttribute("data-method") == "3") {
-          total.innerHTML = `<p>Total Price:</p> <span>€${(
+          total.innerHTML = `<p>Total Price:</p> <span>€${parseInt(
+            totalprice
+          ).toFixed(2)}</span><p>+ €${(
+            parseInt(totalprice) +
+            parseInt(totalprice) * 0.02 +
+            0.1 -
+            parseInt(totalprice)
+          ).toFixed(2)}</p><hr><p>€${(
             parseInt(totalprice) +
             parseInt(totalprice) * 0.02 +
             0.1
-          ).toFixed(2)}</span>`;
+          ).toFixed(2)}</p>`;
         }
       }
     });
