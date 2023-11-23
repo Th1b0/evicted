@@ -214,3 +214,45 @@ nav .content .nav-items li .cart .fa-cart-shopping {
   align-items: center;
   pointer-events: none; /* Make it transparent to mouse events */
 }
+
+/* Your existing CSS rules */
+
+@media screen and (max-width: 800px) {
+  .container {
+    margin-inline: 1rem;
+  }
+  nav .content .nav-items {
+    display: none;
+  }
+  .cart-m {
+    display: inline-block !important;
+  }
+  .number-cart {
+    background-color: #8100fe;
+    position: absolute;
+    top: -1px;
+    right: 17px;
+    height: 26px;
+    width: 27px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* Make it transparent to mouse events */
+  }
+  .mobile-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    padding-block: 10px;
+    border-bottom: 0.1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Rest of your CSS */
