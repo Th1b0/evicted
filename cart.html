@@ -78,11 +78,11 @@
 
         table {
             margin-top: 20vh;
-            width: 50vw;
+            width: 90vw;
             border-collapse: collapse;
             border-spacing: 0;
             text-align: center;
-            font-size:x-large;
+            font-size: 1.25rem;
             font-weight: bold;
         }
 
@@ -165,16 +165,16 @@
         <div class="content">
             <a href="/"><img src="./img/full-logo-white.svg" alt="Logo of evicted"></a>
             <ul class="nav-items">
-                <li><a class="current" href="/">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/products">Products</a></li>
                 <li><a href="#faq">Faq</a></li>
                 <li><a href="/support">Support</a></li>
-                <li><a class="cart" href="/cart"><i class="fa-solid fa-cart-shopping"></i>
+                <li><a class="cart current" href="/cart"><i class="fa-solid fa-cart-shopping"></i>
                         <p class="number-cart">0</p>
                     </a></li>
             </ul>
             <div class="mobile-nav"><i id="mb-btn" class="fa-solid fa-bars"></i>
-                <a class="cart-m" style="display: none;" href="/cart"><i class="fa-solid fa-cart-shopping"></i>
+                <a class="cart-m " style="display: none;" href="/cart"><i class="fa-solid fa-cart-shopping"></i>
                     <p class="number-cart">0</p>
                 </a>
             </div>
@@ -182,7 +182,7 @@
                 <div class="mobile-items">
                     <i id="cbtn" class="fa-solid fa-x"></i>
                     <ul class="mobile-routes">
-                        <li><a class="current" href="/">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="/products">Products</a></li>
                         <li><a onclick="closeMenu()" href="#faq">Faq</a></li>
                         <li><a href="/support">Support</a></li>
@@ -258,7 +258,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" style="color: black;">
-                <p class="output" style="color: black;"></p>
+                <p class="output" style="color: black;font-size: 1.3rem;"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="checkout">Proceed</button>

@@ -115,7 +115,7 @@ function renderProducts() {
       const cellQty = row.insertCell(2);
       cellQty.innerHTML = `<p>Qty ${quantity}</p>  <span>€${(
         quantity * product.price
-      ).toFixed(2)}</span><br><span>€${product.price}</span>`;
+      ).toFixed(2)}</span><br><p>€${product.price}</p>`;
       //make it so the unite price will be under the qty and full price
       totalCartPrice = totalCartPrice + product.price * quantity;
     });
