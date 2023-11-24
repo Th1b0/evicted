@@ -44,6 +44,25 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
+        .number-cart {
+            background-color: #8100fe;
+            position: absolute;
+            top: -1px;
+            right: 17px;
+            height: 26px;
+            width: 27px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            /* Make it transparent to mouse events */
+        }
+    
+        .fa-cart-shopping {
+            color: white;
+            font-size: 1.5rem;
+        }
         .fa-cart-shopping {
             color: white;
             font-size: 1.5rem;
@@ -93,7 +112,7 @@
             text-decoration: none;
             color: white;
             background-color: #8100fe;
-            width: 10vw;
+            width: 50vw;
             border-radius: 25px;
             margin-inline: auto;
             font-size: 22px;
@@ -103,6 +122,36 @@
             cursor: pointer;
             margin-top: 1.5rem;
         }
+            input[type='radio']:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+
+    input[type='radio']:checked:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color:#8100fe;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+    .modal-body{
+         color: black;
+    }
     </style>
     <script defer src="./js/mobile.js"></script>
     <script defer src="./js/carousel.js"></script>
@@ -116,7 +165,7 @@
         <div class="content">
             <a href="/"><img src="./img/full-logo-white.svg" alt="Logo of evicted"></a>
             <ul class="nav-items">
-                <li><a href="/">Home</a></li>
+                <li><a class="current" href="/">Home</a></li>
                 <li><a href="/products">Products</a></li>
                 <li><a href="#faq">Faq</a></li>
                 <li><a href="/support">Support</a></li>
@@ -133,9 +182,7 @@
                 <div class="mobile-items">
                     <i id="cbtn" class="fa-solid fa-x"></i>
                     <ul class="mobile-routes">
-                        <li>
-                            <a href=" /">Home</a>
-                        </li>
+                        <li><a class="current" href="/">Home</a></li>
                         <li><a href="/products">Products</a></li>
                         <li><a onclick="closeMenu()" href="#faq">Faq</a></li>
                         <li><a href="/support">Support</a></li>
@@ -144,18 +191,18 @@
             </div>
         </div>
     </nav>
-    <div class="cart-table">
+    <div class="cart-table" method="card">
         <table id="productTable">
             <thead>
             </thead>
             <tbody>
-                <!-- Product information will be added here dynamically -->
+            
             </tbody>
         </table>
             <form id="paymentForm"
                 style="color: white;margin-top: 2rem;font-weight: bold;font-size: 1.1rem;display: flex;flex-direction: column;justify-content: center;align-items: flex-start;gap: 1rem;">
                 <label>
-                    <input type="radio" name="paymentOption" data-method="1" id="card" value="card">
+                    <input type="radio" name="paymentOption" data-method="1" id="card" checked value="card">
                     Card/Link/Google/Apple (2.5% + €0.35)
                 </label>
                 <label>
@@ -210,8 +257,8 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Proceed to checkout?</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <h1>test</h1>
+            <div class="modal-body" style="color: black;">
+                <p class="output" style="color: black;"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="checkout">Proceed</button>
