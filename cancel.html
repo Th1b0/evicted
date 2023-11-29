@@ -70,7 +70,7 @@
             pointer-events: none;
             /* Make it transparent to mouse events */
         }
-    
+
         .fa-cart-shopping {
             color: white;
             font-size: 1.5rem;
@@ -102,122 +102,41 @@
                         <li><a onclick="closeMenu()" href="#faq">Faq</a></li>
                         <li><a href="/support">Support</a></li>
                     </ul>
-                    </div>
-                    </div>
-                    </div>
-                    </nav>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div class="container">
-        <section class="hero">
-            <h1>
-                The best<br /> store for <span>quality</span> <span>replicas</span>.
-            </h1>
-            <p class="slogan">Embrace variety and seamless shopping, <span>Evicted</span> is the top marketplace. Enjoy
-                a
-                hassle-free
-                ordering
-                experience and stay updated with timely email notifications.</p>
-            <a class="shbtn" href="#products">Shop now <i style="color: white;font-size: 1.5rem;"
-                    class="fa-solid fa-arrow-right"></i></a>
-            <a href="/products" class="cbtn">Catalog</a>
-            <div class="card-hero">
-                <div class="card">
-                    <i class="fa-solid fa-credit-card"></i>
-                    <p>Tired of complicated ordering methods? So are we. Simplify your shopping experience with us – the
-                        easiest and safest way
-                        to order your favorite products.</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-box"></i>
-                    <p>Experience the convenience of tracked shipping, ensuring your products reach your doorstep
-                        securely, all while keeping
-                        you informed about their journey.</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-wallet"></i>
-                    <p>Enjoy our top-notch products without breaking the bank. We believe everyone should have access to
-                        quality items,
-                        regardless of their financial situation.</p>
-                </div>
-            </div>
-        </section>
-        <!-- Swiper -->
-        <div onclick="" class="swipe-container" id="products">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="cursor: pointer;" onclick="addToCart('3')"><img src="./img/airpods-32434.png" alt="">
-                        <h2>Airpod Pro with "ANC"</h2>
-                        <p>Meet Airpod Pro with ANC – 35dB noise cancellation, seamless iOS integration, and extended
-                            battery life.</p>
-                        <h2 class="price">€51.99</h2>
-                    </div>
-                    <div class="swiper-slide" style="cursor: pointer;" onclick="addToCart('1')"><img
-                            src="./img/550x531-PhotoRoom.png-PhotoRoom.png" alt="">
-                        <h2>Airpod 3th Gen</h2>
-                        <p>Meet Airpod 3th Gen, seamless iOS integration.</p>
-                        <h2 class="price">€46.99</h2>
-                    </div>
-                    <div class="swiper-slide" style="cursor: pointer;" onclick="addToCart('4')"><img src="./img/airpods-32434.png" alt="">
-                        <h2>Airpod Pro 2 with "ANC"</h2>
-                        <p>Meet Airpod Pro with ANC – 35dB noise cancellation, seamless iOS integration, and extended
-                            battery life.</p>
-                        <h2 class="price">€54.99</h2>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-        <!-- Swiper JS -->
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                spaceBetween: 30,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                autoplay: {
-                    delay: 4000, // Autoplay delay in milliseconds
-                },
-            });
-        </script>
-        <h2 id="faq" style=" color: white;text-align: center;margin-top: 6rem;margin-bottom: 3rem;">FAQ</h2>
-        <div class="faq-container">
-            <div class="faq-item active">
-                <div class="question">What payment methods do you accept?</div>
-                <div class="answer">We accept a variety of payment methods to provide flexibility for our customers.
-                    Currently,
-                    we support payments through major credit cards, PayPal, and other secure online payment options like
-                    Google
-                    and Apple pay.</div>
-            </div>
+        <style>
+            h1 {
+                font-size: 2rem;
+                color: #8100fe
+            }
 
-            <div class="faq-item active">
-                <div class="question">How long does it take for the product to be delivered?</div>
-                <div class="answer">We aim to deliver your product within a reasonable timeframe. Typically, our
-                    delivery time
-                    ranges between 1 to 3 weeks. Please note that delivery times may vary based on your location and
-                    other
-                    factors. We appreciate your patience and understanding as we work to get your order to you as
-                    quickly as
-                    possible.</div>
-            </div>
+            p {
+                font-size: large;
+            }
 
-            <div class="faq-item active">
-                <div class="question">How can I contact customer support?</div>
-                <div class="answer">You can reach our customer support team through the support page on our website or
-                    via email
-                </div>
-                </div>
-                <div class="faq-item active">
-                    <div class="question">What does ANC stand for?</div>
-                    <div class="answer">ANC stands for Active Noise Cancellation. It is a technology used in audio devices,
-                    including headphones and earphones, to reduce or eliminate ambient noise. With ANC, you can enjoy a
-                    more
-                    immersive and focused audio experience by minimizing external sounds and distractions.</div>
-            </div>
+            .th {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 25vh;
+                margin-bottom: 20vh;
+                background: rgb(24, 24, 36);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding-inline: 1rem;
+                padding-block: 0.5rem;
+            }
+        </style>
+        <div class="th">
+            <h1>Payment canceled!</h1>
+            <p>If this keeps persisting contact us at support@evicted.shop.</p>
         </div>
-        </div>
+    </div>
 
     <footer>
         <div class="footer-content">

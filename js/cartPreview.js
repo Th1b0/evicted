@@ -46,11 +46,8 @@ cartNumberElements.forEach((element) => (element.textContent = totalCartItems));
 
 // Function to add items to the cart
 function addToCart(id) {
-  // Find the selected product
-  const selectedProduct = products.find((product) => product.id === id);
-
   // Retrieve and update cart items in local storage
-  cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
   const existingCartItemIndex = cartItems.findIndex((item) =>
     item.startsWith(id + "+")
   );
@@ -66,7 +63,7 @@ function addToCart(id) {
   }
 
   // Calculate the total number of items
-  totalCartItems = cartItems.reduce(
+  const totalCartItems = cartItems.reduce(
     (total, item) => total + parseInt(item.split("+")[1]),
     0
   );
@@ -77,7 +74,58 @@ function addToCart(id) {
   });
 
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  const currentPage = window.location.pathname;
+  if (currentPage === "/cart.html" || currentPage === "/cart") {
+    location.reload();
+  }
+  if (currentPage === "/" || currentPage === "/index.html") {
+    location.href = "/cart.html";
+  }
 }
+
+function removeFromCart(id) {
+  const currentPage = window.location.pathname;
+  if (currentPage === "/cart.html" || currentPage === "/cart") {
+    location.reload();
+  }
+
+  // Retrieve and update cart items in local storage
+  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const existingCartItemIndex = cartItems.findIndex((item) =>
+    item.startsWith(id + "+")
+  );
+
+  if (existingCartItemIndex !== -1) {
+    // If the product is in the cart, decrement its quantity
+    const quantity = parseInt(cartItems[existingCartItemIndex].split("+")[1]);
+
+    if (quantity > 1) {
+      cartItems[existingCartItemIndex] = id + "+" + (quantity - 1);
+    } else {
+      // If quantity is 1, remove the item from the cart
+      cartItems.splice(existingCartItemIndex, 1);
+    }
+
+    // Calculate the total number of items
+    const totalCartItems = cartItems.reduce(
+      (total, item) => total + parseInt(item.split("+")[1]),
+      0
+    );
+
+    // Update the cart number for each element
+    cartNumberElements.forEach((element) => {
+      element.textContent = totalCartItems;
+    });
+
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }
+}
+
+function addToCartRedirect(id) {
+  addToCart(id);
+  location.href = "/cart.html";
+}
+
 function renderProducts() {
   // Check if the current page is /cart.html or /cart
   const currentPage = window.location.pathname;
@@ -115,7 +163,7 @@ function renderProducts() {
       cellName.textContent = `${product.name}`;
       const ProductPrice = product.price.toFixed(2);
       const cellQty = row.insertCell(2);
-      cellQty.innerHTML = `<p>Qty ${quantity}</p>  <span>€${(
+      cellQty.innerHTML = `<p class="qty"><span style="cursor:pointer;" onclick="removeFromCart(${productId})">-</span> Qty${quantity} <span style="cursor:pointer;" onclick="addToCart(${productId})">+</span></p><span>€${(
         quantity * product.price
       ).toFixed(2)}</span><br><p>€${ProductPrice}</p>`;
 

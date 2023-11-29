@@ -152,6 +152,15 @@
     .modal-body{
          color: black;
     }
+    .paymentForm {
+        display: flex;
+        justify-content: center;
+    }
+    .qty {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
     </style>
     <script defer src="./js/mobile.js"></script>
     <script defer src="./js/carousel.js"></script>
@@ -199,8 +208,8 @@
             
             </tbody>
         </table>
-            <form id="paymentForm"
-                style="color: white;margin-top: 2rem;font-weight: bold;font-size: 1.1rem;display: flex;flex-direction: column;justify-content: center;align-items: flex-start;gap: 1rem;">
+            <form
+                style="color: white;margin-top: 2rem;font-weight: bold;font-size: 1.1rem;display: flex;flex-direction: column;justify-content: center;align-items: flex-start;gap: 1rem;margin-inline: 15px;">
                 <label>
                     <input type="radio" name="paymentOption" data-method="1" id="card" checked value="card">
                     Card/Link/Google/Apple/Klarna (2.5% + €0.35)
