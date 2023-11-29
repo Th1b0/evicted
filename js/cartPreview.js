@@ -8,6 +8,8 @@ let totalCartItems = cartItems.reduce(
   0
 );
 
+let Pmethod = "card";
+
 const products = [
   {
     id: "1",
@@ -111,90 +113,56 @@ function renderProducts() {
 
       const cellName = row.insertCell(1);
       cellName.textContent = `${product.name}`;
-
+      const ProductPrice = product.price.toFixed(2);
       const cellQty = row.insertCell(2);
       cellQty.innerHTML = `<p>Qty ${quantity}</p>  <span>€${(
         quantity * product.price
-      ).toFixed(2)}</span><br><p>€${product.price}</p>`;
-      //make it so the unite price will be under the qty and full price
-      totalCartPrice = totalCartPrice + product.price * quantity;
+      ).toFixed(2)}</span><br><p>€${ProductPrice}</p>`;
+
+      totalCartPrice =
+        totalCartPrice + parseFloat(ProductPrice) * parseInt(quantity);
     });
 
     // Add a row at the bottom for the total price
     const totalRow = tableBody.insertRow();
     const totalCell = totalRow.insertCell(0);
     totalCell.colSpan = 4; // Span the entire row
-    totalCell.innerHTML = `<div class="total" data-price="${totalCartPrice.toFixed(
+    const fee = 35;
+    const adjustedTotal =
+      parseFloat(totalCartPrice) * 1.025 -
+      parseFloat(totalCartPrice) +
+      parseFloat(0.35);
+    console.log(adjustedTotal);
+    totalCell.innerHTML = `<div class="total" data-price="${totalCartPrice}"><p>Total Price:</p> <span>€${totalCartPrice.toFixed(
       2
-    )}"><p>Total Price:</p> <span>€${totalCartPrice.toFixed(2)}</span><p>+ €${(
-      parseInt(totalCartPrice) +
-      parseInt(totalCartPrice) * 0.025 +
-      0.35 -
-      parseInt(totalCartPrice)
-    ).toFixed(2)}</p><hr><p>€${(
-      parseInt(totalCartPrice) +
-      parseInt(totalCartPrice) * 0.025 +
-      0.35
-    ).toFixed(2)}</p></div>`;
+    )}</span></div>`;
   }
 }
 
 // Call the renderProducts function when the page loads
+
 document.addEventListener("DOMContentLoaded", renderProducts);
 document.addEventListener("DOMContentLoaded", adjustPrice);
-document.addEventListener("DOMContentLoaded", adjustPrice());
 
 function adjustPrice() {
   const card = document.querySelectorAll("#card");
   const total = document.querySelector(".total");
   const checkout = document.querySelector(".cart-table");
 
-  const totalprice = total.getAttribute("data-price");
+  const totalprice = parseFloat(total.getAttribute("data-price")) * 100; // Convert to cents
+
   for (const radioButton of card) {
+    console.log(checkout.getAttribute("method"));
     radioButton.addEventListener("change", () => {
-      console.log(radioButton.checked);
       if (radioButton.checked) {
         if (radioButton.getAttribute("data-method") == "1") {
-          total.innerHTML = `<p>Total Price:</p> <span>€${parseInt(
-            totalprice
-          ).toFixed(2)}</span><p>+ €${(
-            parseInt(totalprice) +
-            parseInt(totalprice) * 0.025 +
-            0.35 -
-            parseInt(totalprice)
-          ).toFixed(2)}</p><hr><p>€${(
-            parseInt(totalprice) +
-            parseInt(totalprice) * 0.025 +
-            0.35
-          ).toFixed(2)}</p>`;
-          checkout.setAttribute("method", "card");
+          Pmethod = "card";
         }
         if (radioButton.getAttribute("data-method") == "2") {
-          total.innerHTML = `<p>Total Price:</p> <span>€${parseInt(
-            totalprice
-          ).toFixed(2)}</span><p>+ €${(
-            parseInt(totalprice) -
-            parseInt(totalprice) +
-            0.35
-          ).toFixed(2)}</p><hr><p>€${(parseInt(totalprice) + 0.35).toFixed(
-            2
-          )}</p>`;
-          checkout.setAttribute("method", "local");
+          Pmethod = "local";
         }
         if (radioButton.getAttribute("data-method") == "3") {
-          total.innerHTML = `<p>Total Price:</p> <span>€${parseInt(
-            totalprice
-          ).toFixed(2)}</span><p>+ €${(
-            parseInt(totalprice) +
-            parseInt(totalprice) * 0.02 +
-            0.1 -
-            parseInt(totalprice)
-          ).toFixed(2)}</p><hr><p>€${(
-            parseInt(totalprice) +
-            parseInt(totalprice) * 0.02 +
-            0.1
-          ).toFixed(2)}</p>`;
-          checkout.setAttribute("method", "paypal");
+          Pmethod = "paypal";
         }
       }
     });
@@ -206,45 +174,54 @@ function checkout() {
   const checkout = document.querySelector(".cart-table");
   const method = checkout.getAttribute("method");
   const modal = document.querySelector(".output");
-  const totalprice = total.getAttribute("data-price");
-  if (method == "card") {
-    modal.innerHTML = `Payment method: Card/Link/Google/Apple<br><br><span>€${parseInt(
-      totalprice
-    ).toFixed(2)}</span><br>+ €${(
-      parseInt(totalprice) +
-      parseInt(totalprice) * 0.025 +
-      0.35 -
-      parseInt(totalprice)
-    ).toFixed(2)}<hr> Total Price: <span>€${(
-      parseInt(totalprice) +
-      parseInt(totalprice) * 0.025 +
-      0.35
-    ).toFixed(2)}</span>`;
+  const totalprice = parseFloat(total.getAttribute("data-price"));
+
+  if (Pmethod == "card") {
+    modal.innerHTML = `Payment method: Card/Link/Google/Apple/Klarna<br><br>Total: <span>€${totalprice.toFixed(
+      2
+    )}</span>`;
   }
-  if (method == "local") {
-    modal.innerHTML = `Payment method: Bancontact/iDeal<br><br><span>€${parseInt(
-      totalprice
-    ).toFixed(2)}</span><br>+ €${(
-      parseInt(totalprice) +
-      0.35 -
-      parseInt(totalprice)
-    ).toFixed(2)}<hr> Total Price: <span>€${(
-      parseInt(totalprice) + 0.35
-    ).toFixed(2)}</span>`;
+  if (Pmethod == "local") {
+    modal.innerHTML = `Payment method: Bancontact/iDeal<br><br>Total: <span>€${totalprice.toFixed(
+      2
+    )}</span>`;
   }
-  if (method == "paypal") {
-    modal.innerHTML = `Payment method: Paypal<br><br><span>€${parseInt(
-      totalprice
-    ).toFixed(2)}</span><br>+ €${(
-      parseInt(totalprice) +
-      parseInt(totalprice) * 0.02 +
-      0.1 -
-      parseInt(totalprice)
-    ).toFixed(2)}<hr> Total Price: <span>€${(
-      parseInt(totalprice) +
-      parseInt(totalprice) * 0.02 +
-      0.1
-    ).toFixed(2)}</span>`;
+  if (Pmethod == "paypal") {
+    modal.innerHTML = `Payment method: Paypal<br><br>Total: <span>€${totalprice.toFixed(
+      2
+    )}</span>`;
   }
 }
+function createStripeCheckout() {
+  const checkout = document.querySelector(".checkout");
+  const method = checkout.getAttribute("method");
+  const itemsString = localStorage.getItem("cartItems");
 
+  // Convert the items string into an array of objects
+  const itemsArray = JSON.parse(itemsString);
+
+  // Example items string: '["1+2","3+1"]'
+  // Converted itemsArray: [{ productId: "1", quantity: 2 }, { productId: "3", quantity: 1 }]
+
+  const itemsToSend = itemsArray.map((itemString) => {
+    const [productId, quantity] = itemString.split("+");
+    return { productId, quantity: parseInt(quantity) };
+  });
+
+  fetch("https://checkout.evicted.shop/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ items: itemsToSend, method: Pmethod }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Checkout session created:", data.sessionId);
+      // Redirect to the checkout page using the returned session ID
+      window.location.href = data.checkoutUrl;
+    })
+    .catch((error) => {
+      console.error("Error creating checkout session:", error);
+    });
+}
