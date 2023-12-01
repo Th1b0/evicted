@@ -259,6 +259,22 @@
             </div>
         </div>
     </footer>
+    <script>
+        // Send a GET request to https://checkout.evicted.shop on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Using the Fetch API to make the GET request
+            fetch('https://checkout.evicted.shop')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    console.log('GET request successful');
+                })
+                .catch(error => {
+                    console.error('Error making GET request:', error.message);
+                });
+        });
+    </script>
 </body>
 
 </html>
